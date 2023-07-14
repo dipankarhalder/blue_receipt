@@ -1,6 +1,7 @@
 import express from "express";
 
 // all important methods and helpers
+import { something_wrong } from "../utils/variablestatic";
 import { getUsers, getUserById, deleteUserById } from "../db/users";
 
 // get all users from the list
@@ -12,9 +13,7 @@ export const getAllUsers = async (
     const users = await getUsers();
     return res.status(200).json(users);
   } catch(error) {
-    return res.status(400).json({ 
-      msg: `Something went wrong, please try again later` 
-    });
+    return res.status(400).json({ msg: something_wrong });
   }
 }
 
@@ -28,9 +27,7 @@ export const viewUser = async (
     const user = await getUserById(id);
     return res.json(user);
   } catch(error) {
-    return res.status(400).json({ 
-      msg: `Something went wrong, please try again later` 
-    });
+    return res.status(400).json({ msg: something_wrong });
   }
 }
 
@@ -56,9 +53,7 @@ export const updateUser = async (
 
     return res.status(200).json(user).end();
   } catch(error) {
-    return res.status(400).json({ 
-      msg: `Something went wrong, please try again later` 
-    });
+    return res.status(400).json({ msg: something_wrong });
   }
 }
 
@@ -72,8 +67,6 @@ export const deleteUser = async (
     const deleteRecord = await deleteUserById(id);
     return res.json(deleteRecord);
   } catch(error) {
-    return res.status(400).json({ 
-      msg: `Something went wrong, please try again later` 
-    });
+    return res.status(400).json({ msg: something_wrong });
   }
 }
