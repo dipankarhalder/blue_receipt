@@ -1,5 +1,6 @@
 import express from "express";
 import { get, merge } from "lodash";
+import { access_denied, something_wrong, cookie_name } from "../utils/variablestatic";
 
 // import helper func
 import { getUserBySessionToken } from "../db/users";
@@ -16,23 +17,17 @@ export const isOwner = async (
 
     // check user login or not
     if(!currentUserId) {
-      return res.status(403).json({ 
-        msg: "Access denied. You are not authorized to access this resource." 
-      });
+      return res.status(403).json({ msg: access_denied });
     }
 
     // check current user match with id or not
     if(currentUserId.toString() !== id) {
-      return res.status(403).json({ 
-        msg: "Access denied. You are not authorized to access this resource." 
-      });
+      return res.status(403).json({ msg: access_denied });
     }
 
     next();
   } catch(error) {
-    return res.status(400).json({ 
-      msg: `Something went wrong, please try again later` 
-    });
+    return res.status(400).json({ msg: something_wrong });
   }
 }
 
@@ -43,28 +38,22 @@ export const isAuthenticated = async (
   next: express.NextFunction
 ) => {
   try {
-    const sessionToken = req.cookies["DIPANKAR-REST-API"];
+    const sessionToken = req.cookies[cookie_name];
 
     // check session token you have or not
     if(!sessionToken) {
-      return res.status(403).json({ 
-        msg: "Access denied. You are not authorized to access this resource." 
-      });
+      return res.status(403).json({ msg: access_denied });
     }
 
     // check existing user or not
     const existingUser = await getUserBySessionToken(sessionToken);
     if(!existingUser) {
-      return res.status(403).json({ 
-        msg: "Access denied. You are not authorized to access this resource." 
-      });
+      return res.status(403).json({ msg: access_denied });
     }
 
     merge(req, { identity: existingUser });
     return next();
   } catch(error) {
-    return res.status(400).json({ 
-      msg: `Something went wrong, please try again later` 
-    });
+    return res.status(400).json({ msg: something_wrong });
   }
 }

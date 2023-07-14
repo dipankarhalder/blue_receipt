@@ -8,17 +8,18 @@ import cors from "cors";
 
 // import files
 import router from "./router";
+import { mongo_error, mongo_succ, run_server } from "./utils/variablestatic";
 
 // important variables
 const PORT = 8000;
-const app = express();
 const MONGO_URL = `mongodb://localhost:27017/rest-auth-api`;
+const app = express();
 
 // db connection with atlas
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
-mongoose.connection.on('error', (error) => console.error('MongoDB connection error:', error));
-mongoose.connection.once('open', () => console.log('Connected to MongoDB!'));
+mongoose.connection.on('error', (error) => console.error(mongo_error, error));
+mongoose.connection.once('open', () => console.log(mongo_succ));
 
 // important middlewares
 app.use(cors({ credentials: true }));
@@ -32,6 +33,6 @@ app.use("/", router());
 // run server
 const server = http.createServer(app);
 server.listen(PORT, () => {
-  console.log(`Server running on: ${PORT}`)
+  console.log(`${run_server} ${PORT}`)
 })
 
