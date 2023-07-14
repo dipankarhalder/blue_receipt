@@ -34,6 +34,7 @@ export interface IContextProviderProps {
 export interface IAuthContextData {
   res_load: boolean;
   signInFunc: (payload: IAuthInputs) => void;
+  signOutFunc: () => void;
 }
 
 // user interfaces

@@ -1,13 +1,13 @@
 "use client";
 
-import { setCookie } from "cookies-next";
+import { setCookie, deleteCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { createContext, useState, useContext, FC } from 'react';
 
 import { IAuthContextData, IContextProviderProps, IAuthInputs } from '@/utils/interface';
 import { allStaticContent } from "@/utils/variables/staticContent";
 import { errorCatch } from '@/utils/helpers/servicesCatch';
-import { DASHBOARD } from "@/utils/variables/allRoutes";
+import { HOME, DASHBOARD } from "@/utils/variables/allRoutes";
 import { signin } from '@/utils/services/auth';
 
 const AuthContext = createContext<IAuthContextData | undefined>(undefined);
@@ -21,7 +21,6 @@ export const AuthContextProvider: FC<IContextProviderProps> = ({ children }) => 
     signin(payload)
       .then((res) => {
         localStorage.setItem("user_logged_info", JSON.stringify(res));
-        localStorage.setItem("user_logged_token", res.authentication.sessionToken);
         setCookie("user_logged_token", res.authentication.sessionToken);
         router.push(DASHBOARD);
         set_res_load(false);
@@ -32,10 +31,16 @@ export const AuthContextProvider: FC<IContextProviderProps> = ({ children }) => 
       });
   };
 
+  const signOutFunc = () => {
+    deleteCookie("user_logged_token");
+    window.location.href = HOME;
+  }
+
   return (
     <AuthContext.Provider value={{ 
       res_load,
-      signInFunc 
+      signInFunc,
+      signOutFunc
     }}>
       {children}
     </AuthContext.Provider>

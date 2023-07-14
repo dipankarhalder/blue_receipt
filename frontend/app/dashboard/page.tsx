@@ -1,8 +1,12 @@
-import React from 'react'
+"use client"
+
+import AppLayout from "@/app/applayout";
 
 const Dashboard = () => {
   return (
-    <div>index</div>
+    <AppLayout>
+      sfgkjshrfjk
+    </AppLayout>
   )
 }
 

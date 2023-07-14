@@ -1,0 +1,19 @@
+@import "./color.scss";
+
+.app_sidebar {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: lighten($gray, 42%);
+  border-right: 1px solid $border;
+
+  .app_logo {
+    width: 100%;
+    padding: 30px;
+
+    img {
+      float: left;
+    }
+  }
+}
