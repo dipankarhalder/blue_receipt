@@ -1,0 +1,101 @@
+@import "./color.scss";
+
+.app_wrapper {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background: $backg;
+
+  .app_content_cover {
+    display: flex;
+    flex-direction: column;
+    width: 430px;
+    padding: 30px 40px;
+    background: $white;
+    @include radius(8px);
+    border: 1px solid $border;
+    box-shadow: 0px 2px 6px $shadow;
+
+    .app_logo {
+      width: 100%;
+      display: flex;
+      margin: 30px 0px;
+      justify-content: center;
+      
+      & > img {
+        width: 150px;
+        height: auto;
+      }
+    }
+
+    .app_heading_wrap {
+      text-align: center;
+      margin-bottom: 30px;
+
+      h1 {
+        display: flex;
+        flex-direction: column;
+        @include font(20px, 500);
+        margin-bottom: 7px;
+      }
+
+      p {
+        @include font(14px, 400);
+        padding: 0 10px;
+        margin-bottom: 10px;
+        line-height: 20px;
+        color: $gray;
+      }
+    }
+
+    .app_auth_form {
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+        .app_field {
+          display: flex;
+          flex-direction: column;
+          padding: 0px 30px;
+          margin-bottom: 16px;
+          
+          input {
+            width: 100%;
+            height: 40px;
+            padding: 0 16px;
+            line-height: 40px;
+            margin-bottom: 2px;
+            @include radius(4px);
+            @include font(14px, 400);
+            border: 1px solid $border;
+          }
+
+          & > span {
+            @include font(12px, 400);
+            margin-bottom: 4px;
+            line-height: 20px;
+            color: $red;
+          }
+        }
+        .app_field_btn {
+          display: flex;
+          margin-bottom: 30px;
+          justify-content: center;
+
+          & > span {
+            @extend .all_btn_blue;
+            line-height: 35px;
+            background: lighten($gray, 38%);
+            color: $black;
+            cursor: default;
+          }
+
+          button {
+            @extend .all_btn_blue;
+          }
+        }
+      }
+    }
+  }
+}

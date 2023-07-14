@@ -1,0 +1,31 @@
+// color variable
+$white: #ffffff;
+$black: #000000;
+$border: #dbdfe2;
+$backg: #f7f8fa;
+$shadow: #e1e3e9;
+$gray: #898989;
+$red: #ef0606;
+$blue: #0b4dff;
+
+// mixin function
+@mixin radius($size) {
+  border-radius: $size;
+}
+
+@mixin font($size, $weight) {
+  font-weight: $weight;
+  font-size: $size;
+}
+
+// common components
+.all_btn_blue {
+  padding: 0 30px;
+  height: 35px;
+  @include font(13px, 400);
+  background: $blue;
+  color: $white;
+  @include radius(4px);
+  cursor: pointer;
+  border: 0px solid transparent;
+}

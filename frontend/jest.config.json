@@ -1,0 +1,12 @@
+ {
+  "testEnvironment": "jsdom",
+  "moduleNameMapper": {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  },
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "babel-jest"
+  },
+  "testMatch": ["**/__tests__/**/*.test.(ts|tsx|js|jsx)"],
+  "setupFilesAfterEnv": ["<rootDir>/setupTests.ts"]
+}

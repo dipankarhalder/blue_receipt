@@ -1,0 +1,32 @@
+// reset
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-nunito);
+}
+input, select, textarea, button {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--font-nunito);
+}
+main {
+  float: left;
+  width: 100%;
+}
+
+.app_toast{
+  font-size: 13px;
+  font-weight: 600;
+  &.error{
+    background: #fff0f1;
+    border-left: 2px solid #da1e28;
+  }
+  & > div:first-child {
+    font-size: 22px;
+  }
+}
