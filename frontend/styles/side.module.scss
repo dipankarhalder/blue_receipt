@@ -16,4 +16,31 @@
       float: left;
     }
   }
+
+  .app_lists{
+    width: 100%;
+    padding: 30px;
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+
+      li {
+        a {
+          float: left;
+          padding: 8px 0px;
+          text-decoration: none;
+          @include font(14px, 400);
+
+          & > svg {
+            float: left;
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
 }
