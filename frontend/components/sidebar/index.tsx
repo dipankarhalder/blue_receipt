@@ -4,7 +4,7 @@ import { useAuthContext } from '@/context/authContext';
 import { allStaticContent } from "@/utils/variables/staticContent";
 import { DASHBOARD } from "@/utils/variables/allRoutes";
 
-import { HiOutlineTemplate } from "react-icons/hi";
+import { HiOutlineTemplate, HiOutlineUserCircle } from "react-icons/hi";
 
 import logo from '@/public/logo.png';
 import side from '@/styles/side.module.scss';
@@ -25,7 +25,7 @@ export const Sidebar = () => {
       <div className={side.app_lists}>
         <ul>
           <li><Link href={DASHBOARD}><HiOutlineTemplate /> Dashboard</Link></li>
-          <li><Link href={DASHBOARD}><HiOutlineTemplate /> Dashboard</Link></li>
+          <li><Link href={DASHBOARD}><HiOutlineUserCircle /> User Profile</Link></li>
           <li><Link href={DASHBOARD}><HiOutlineTemplate /> Dashboard</Link></li>
           <li><Link href={DASHBOARD}><HiOutlineTemplate /> Dashboard</Link></li>
           <li><Link href={DASHBOARD}><HiOutlineTemplate /> Dashboard</Link></li>
